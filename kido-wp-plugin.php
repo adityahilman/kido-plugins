@@ -8,14 +8,19 @@ Author: Aditya Hilman
 Author URI: https://www.adityahilman.com
 */
 
-function kido_admin_menu()
-{
-	add_options_page("Kido Settings Menu","Kido Settings Menu",1,"Kido Settings Menu","kido_settings_menu");
-}
+/**
+ * Check if WooCommerce is active
+ **/
+if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+    // Put your plugin code here
+    // function menambahkan menu di tab Settings
+	add_filter('woocommerce_get_sections_shipping','kido_add_shipping_section');
+	function kido_add_shipping_section ($section)
+	{
+		$section['kido-wp-plugin'] = __('KidoDia','kido-wp-plugin');
+		return $section;
+			echo "test";
 
-function kido_settings_menu()
-{
-	include("templates/kido_settings_menu_page.php");
+	}
 }
-add_action('admin_menu','kido_admin_menu');
 ?>
