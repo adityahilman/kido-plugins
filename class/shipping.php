@@ -6,6 +6,10 @@ version : 1.0
 writer : Aditya Hilman ( aditya.hilman@gmail.com)
 */
 
-echo "Class Shipping";
+class Kido_Shipping_Method extends WC_Shipping_Method
+{
+
+	public $shippingcost;
+}
 
 ?>
